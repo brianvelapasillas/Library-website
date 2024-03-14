@@ -24,6 +24,23 @@
       include 'conection.php';
       $consult = "SELECT * FROM author";
       $result = mysqli_query($conection, $consult);
+
+      
+      $publishers_per_page = 5;
+      $total_publishers = mysqli_num_rows($result);
+      $pages = $total_publishers/5;
+      $pages = ceil($pages);
+      $page = 0;
+
+
+      if(!$_GET){
+        header('location:listing.php?page=1');
+      }
+
+      $start = ($_GET['page']-1)*$publishers_per_page;
+
+      $consult = "SELECT * FROM editorials LIMIT ".$start.",".$publishers_per_page;
+      $result = mysqli_query($conection, $consult); 
     ?>
 
 
