@@ -25,21 +25,21 @@
       $consult = "SELECT * FROM author";
       $result = mysqli_query($conection, $consult);
 
-      
-      $publishers_per_page = 5;
-      $total_publishers = mysqli_num_rows($result);
-      $pages = $total_publishers/5;
+
+      $authors_per_page = 5;
+      $total_authors = mysqli_num_rows($result);
+      $pages = $total_authors/5;
       $pages = ceil($pages);
       $page = 0;
 
 
       if(!$_GET){
-        header('location:listing.php?page=1');
+        header('location:list_author.php?page=1');
       }
 
-      $start = ($_GET['page']-1)*$publishers_per_page;
+      $start = ($_GET['page']-1)*$authors_per_page;
 
-      $consult = "SELECT * FROM editorials LIMIT ".$start.",".$publishers_per_page;
+      $consult = "SELECT * FROM author LIMIT ".$start.",".$authors_per_page;
       $result = mysqli_query($conection, $consult); 
     ?>
 
@@ -111,7 +111,7 @@
         <li class="page-item <?php echo $_GET['page']<=1 ? 'disabled' : '' ?>"> 
 
             <a class="page-link"
-            href= "listing.php?page=<?php echo $_GET['page']-1 ?>">
+            href= "list_author.php?page=<?php echo $_GET['page']-1 ?>">
 
             Previous
             </a> 
@@ -121,7 +121,7 @@
 
           <?php for($i=0; $i<$pages; $i++): ?>
           <li class="page-item <?php echo $_GET['page']==$i+1 ? 'active' : '' ?>">
-            <a class="page-link" href="listing.php?page=<?php echo $i+1 ?>">
+            <a class="page-link" href="list_author.php?page=<?php echo $i+1 ?>">
               <?php echo $i+1 ?> 
             </a>
           </li>
@@ -130,7 +130,7 @@
 
           <li class="page-item <?php echo $_GET['page']>=$pages ? 'disabled' : '' ?>">
             <a class="page-link"
-              href= "listing.php?page=<?php echo $_GET['page']+1 ?>">
+              href= "list_author.php?page=<?php echo $_GET['page']+1 ?>">
 
               Next
             </a> 
