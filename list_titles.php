@@ -107,14 +107,14 @@
     </div>
 
 
-     <div class="card-footer bg-transparent">
+    <div class="card-footer bg-transparent">
         <nav aria-label="...">
         <ul class="pagination">
 
         <li class="page-item <?php echo $_GET['page']<=1 ? 'disabled' : '' ?>"> 
 
             <a class="page-link"
-            href= "list_titles.php?page=<?php echo $_GET['page']-1 ?>">
+            href= "listing.php?page=<?php echo $_GET['page']-1 ?>">
 
             Previous
             </a> 
@@ -124,7 +124,7 @@
 
           <?php for($i=0; $i<$pages; $i++): ?>
           <li class="page-item <?php echo $_GET['page']==$i+1 ? 'active' : '' ?>">
-            <a class="page-link" href="list_titles.php?page=<?php echo $i+1 ?>">
+            <a class="page-link" href="listing.php?page=<?php echo $i+1 ?>">
               <?php echo $i+1 ?> 
             </a>
           </li>
@@ -133,7 +133,7 @@
 
           <li class="page-item <?php echo $_GET['page']>=$pages ? 'disabled' : '' ?>">
             <a class="page-link"
-              href= "list_titles.php?page=<?php echo $_GET['page']+1 ?>">
+              href= "listing.php?page=<?php echo $_GET['page']+1 ?>">
 
               Next
             </a> 
